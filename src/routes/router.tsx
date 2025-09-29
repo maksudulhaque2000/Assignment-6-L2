@@ -5,9 +5,8 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import PrivateRoute from './PrivateRoute';
 import DashboardLayout from '../layouts/DashboardLayout';
-
-// ড্যাশবোর্ডের জন্য একটি placeholder পেইজ তৈরি করুন
-const DashboardHome = () => <div>Welcome to your Dashboard!</div>; 
+import UserManagement from '../pages/dashboard/admin/UserManagement';
+import DashboardHome from '../pages/dashboard/DashboardHome';
 
 export const router = createBrowserRouter([
   // Public Routes
@@ -44,8 +43,10 @@ export const router = createBrowserRouter([
         index: true,
         element: <DashboardHome />,
       },
-      // এখানে প্রতিটি রোলের জন্য ড্যাশবোর্ডের অন্যান্য পেইজ যোগ হবে
-      // যেমন: path: 'user-management', element: <UserManagementPage />
+      {
+        path: 'user-management',
+        element: <UserManagement />,
+      },
     ],
   },
 ]);

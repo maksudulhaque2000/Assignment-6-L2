@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { useAppSelector } from '../redux/hooks';
 import { selectCurrentToken } from '../redux/features/auth/authSlice';
 import { Navigate, useLocation } from 'react-router-dom';

@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import type { FieldValues } from 'react-hook-form';
 import { useLoginMutation } from '../redux/features/auth/authApi';
 import { useAppDispatch } from '../redux/hooks';
 import { setUser } from '../redux/features/auth/authSlice';
@@ -11,14 +12,16 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: FieldValues) => {
     const toastId = toast.loading('Logging in...');
     try {
       const res = await login(data).unwrap();
+
       dispatch(setUser({ user: res.data.user, token: res.data.token }));
+
       toast.success('Logged in successfully!', { id: toastId });
       navigate('/');
-    } catch (error) {
+    } catch {
       toast.error('Failed to login. Please check your credentials.', { id: toastId });
     }
   };
