@@ -3,7 +3,6 @@ import { useAppSelector } from '../redux/hooks';
 import { selectCurrentUser } from '../redux/features/auth/authSlice';
 
 
-// ধাপ ১: নেভিগেশন আইটেমের জন্য একটি টাইপ তৈরি করা হলো
 type TNavItem = {
   name: string;
   path: string;
@@ -17,6 +16,7 @@ const adminNavItems: TNavItem[] = [
 
 const driverNavItems: TNavItem[] = [
   { name: 'Dashboard', path: '/dashboard' },
+  { name: 'Active Ride', path: '/dashboard/active-ride' },
   { name: 'Ride Requests', path: '/dashboard/ride-requests' },
   { name: 'Ride History', path: '/dashboard/ride-history' },
   { name: 'Earnings', path: '/dashboard/earnings' },
@@ -31,7 +31,6 @@ const riderNavItems: TNavItem[] = [
 const Sidebar = () => {
   const user = useAppSelector(selectCurrentUser);
   
-  // ধাপ ২: ভেরিয়েবল ঘোষণার সময় নতুন টাইপটি ব্যবহার করা হলো
   let navItems: TNavItem[];
 
   switch (user?.role) {
@@ -52,7 +51,7 @@ const Sidebar = () => {
     <aside className="bg-gray-800 text-white w-64 min-h-screen p-4">
       <nav>
         <ul>
-          {navItems.map((item) => ( // এখন TypeScript `item`-এর টাইপ জানে
+          {navItems.map((item) => (
             <li key={item.name} className="mb-2">
               <NavLink
                 to={item.path}
