@@ -9,7 +9,37 @@ const rideApi = baseApi.injectEndpoints({
         body: rideData,
       }),
     }),
+
+    getRideHistory: builder.query({
+      query: () => ({
+        url: '/rides/history/rider',
+        method: 'GET',
+      }),
+      providesTags: ['rides'],
+    }),
+
+    getPendingRequests: builder.query({
+      query: () => ({
+        url: '/rides/requests',
+        method: 'GET',
+      }),
+      providesTags: ['rides'],
+    }),
+
+    acceptRide: builder.mutation({
+      query: (rideId) => ({
+        url: `/rides/${rideId}/accept`,
+        method: 'PATCH',
+      }),
+      invalidatesTags: ['rides'],
+    }),
+
   }),
 });
 
-export const { useRequestRideMutation } = rideApi;
+export const {
+  useRequestRideMutation,
+  useGetRideHistoryQuery,
+  useGetPendingRequestsQuery,
+  useAcceptRideMutation,
+} = rideApi;

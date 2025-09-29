@@ -8,6 +8,8 @@ import DashboardLayout from '../layouts/DashboardLayout';
 import UserManagement from '../pages/dashboard/admin/UserManagement';
 import DashboardRedirect from './DashboardRedirect';
 import RequestRide from '../pages/dashboard/rider/RequestRide';
+import RideHistory from '../pages/dashboard/common/RideHistory';
+import RideRequests from '../pages/dashboard/driver/RideRequests';
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +30,8 @@ export const router = createBrowserRouter([
       },
       { path: 'user-management', element: <UserManagement /> },
       { path: 'request-ride', element: <RequestRide /> },
+      { path: 'ride-history', element: <RideHistory /> },
+      { path: 'ride-requests', element: <RideRequests /> },
     ],
   },
 ]);
