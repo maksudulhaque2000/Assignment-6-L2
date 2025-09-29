@@ -40,6 +40,13 @@ const adminApi = baseApi.injectEndpoints({
       providesTags: ['drivers'],
     }),
 
+    getDashboardAnalytics: builder.query({
+      query: () => ({
+        url: '/admin/analytics',
+        method: 'GET',
+      }),
+    }),
+
     manageUserBlockStatus: builder.mutation({
       query: ({ userId, isBlocked }) => ({
         url: `/admin/users/${userId}/block`,
@@ -65,4 +72,5 @@ export const {
   useGetAllDriversQuery,
   useManageUserBlockStatusMutation,
   useManageDriverApprovalMutation,
+  useGetDashboardAnalyticsQuery,
 } = adminApi;

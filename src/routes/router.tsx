@@ -6,47 +6,28 @@ import Register from '../pages/Register';
 import PrivateRoute from './PrivateRoute';
 import DashboardLayout from '../layouts/DashboardLayout';
 import UserManagement from '../pages/dashboard/admin/UserManagement';
-import DashboardHome from '../pages/dashboard/DashboardHome';
+import DashboardRedirect from './DashboardRedirect';
+import RequestRide from '../pages/dashboard/rider/RequestRide';
 
 export const router = createBrowserRouter([
-  // Public Routes
   {
     path: '/',
     element: <MainLayout />,
-    children: [
-      {
-        path: '/',
-        element: <Home />,
-      },
-      // এখানে অন্যান্য পাবলিক পেইজ (About, Contact) যোগ হবে
-    ],
+    children: [ { path: '/', element: <Home /> } ],
   },
-  {
-    path: '/login',
-    element: <Login />,
-  },
-  {
-    path: '/register',
-    element: <Register />,
-  },
+  { path: '/login', element: <Login /> },
+  { path: '/register', element: <Register /> },
 
-  // Dashboard Routes (Protected)
   {
     path: '/dashboard',
-    element: (
-      <PrivateRoute>
-        <DashboardLayout />
-      </PrivateRoute>
-    ),
+    element: ( <PrivateRoute> <DashboardLayout /> </PrivateRoute> ),
     children: [
       {
         index: true,
-        element: <DashboardHome />,
+        element: <DashboardRedirect />,
       },
-      {
-        path: 'user-management',
-        element: <UserManagement />,
-      },
+      { path: 'user-management', element: <UserManagement /> },
+      { path: 'request-ride', element: <RequestRide /> },
     ],
   },
 ]);
