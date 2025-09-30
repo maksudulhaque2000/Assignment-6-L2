@@ -17,6 +17,7 @@ import Contact from '../pages/Contact';
 import Earnings from '../pages/dashboard/driver/Earnings';
 import Faq from '../pages/Faq';
 import PersistLogin from '../layouts/PersistLogin';
+import RideOversight from '../pages/dashboard/admin/RideOversight';
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
         element: <UserManagement />,
       },
       {
+          path: 'ride-oversight',
+          element: <RideOversight />,
+      },
+      {
         path: 'request-ride',
         element: <RequestRide />,
       },
@@ -83,7 +88,7 @@ export const router = createBrowserRouter([
       {
           path: 'earnings',
           element: <Earnings />,
-        },
+      },
     ],
   },
 ]);

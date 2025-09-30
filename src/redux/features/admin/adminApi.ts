@@ -4,6 +4,7 @@ type TQueryArgs = {
   searchTerm?: string;
   page?: number;
   limit?: number;
+  status?: string;
 };
 
 const adminApi = baseApi.injectEndpoints({
@@ -40,6 +41,22 @@ const adminApi = baseApi.injectEndpoints({
       providesTags: ['drivers'],
     }),
 
+    getAllRides: builder.query({
+      query: (args: TQueryArgs = {}) => {
+        const params = new URLSearchParams();
+        if (args.status) params.append('status', args.status);
+        if (args.page) params.append('page', String(args.page));
+        if (args.limit) params.append('limit', String(args.limit));
+        
+        return {
+          url: '/admin/rides',
+          method: 'GET',
+          params: params,
+        };
+      },
+      providesTags: ['rides'],
+    }),
+
     getDashboardAnalytics: builder.query({
       query: () => ({
         url: '/admin/analytics',
@@ -70,6 +87,7 @@ const adminApi = baseApi.injectEndpoints({
 export const {
   useGetAllRidersQuery,
   useGetAllDriversQuery,
+  useGetAllRidesQuery,
   useManageUserBlockStatusMutation,
   useManageDriverApprovalMutation,
   useGetDashboardAnalyticsQuery,

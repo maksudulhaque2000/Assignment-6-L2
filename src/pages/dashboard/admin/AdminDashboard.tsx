@@ -3,7 +3,8 @@ import type { StepType } from '@reactour/tour';
 import { useEffect } from 'react';
 import { useGetDashboardAnalyticsQuery } from "../../../redux/features/admin/adminApi";
 import StatCard from '../StatCard';
-import AnalyticsChart from '../AnalyticsChart';
+
+import Skeleton from '../../../components/ui/Skeleton';
 
 const steps: StepType[] = [
   { 
@@ -42,7 +43,19 @@ const AdminDashboardContent = () => {
 
 
   if (isLoading) {
-    return <div>Loading analytics...</div>;
+    return <div>
+        <h1 className="text-3xl font-bold mb-6"><Skeleton className="h-9 w-72" /></h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <Skeleton className="h-28" />
+          <Skeleton className="h-28" />
+          <Skeleton className="h-28" />
+          <Skeleton className="h-28" />
+        </div>
+        <div>
+          <h2 className="text-2xl font-semibold mb-4"><Skeleton className="h-8 w-48" /></h2>
+          <Skeleton className="h-96" />
+        </div>
+      </div>
   }
 
   const analyticsData = data?.data;
@@ -60,7 +73,7 @@ const AdminDashboardContent = () => {
 
       <div id="chart-section">
         <h2 className="text-2xl font-semibold mb-4">Ride Trends</h2>
-        <AnalyticsChart />
+        
       </div>
     </div>
   );
