@@ -12,12 +12,26 @@ import RideHistory from '../pages/dashboard/common/RideHistory';
 import RideRequests from '../pages/dashboard/driver/RideRequests';
 import ActiveRide from '../pages/dashboard/driver/ActiveRide';
 import Profile from '../pages/dashboard/common/Profile';
+import About from '../pages/About';
+import Contact from '../pages/Contact';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
-    children: [ { path: '/', element: <Home /> } ],
+    children: [ 
+      { path: '/',
+        element: <Home />,
+      },
+      {
+        path: '/about',
+        element: <About />,
+      },
+      {
+        path: '/contact',
+        element: <Contact />,
+      },
+     ],
   },
   { path: '/login', element: <Login /> },
   { path: '/register', element: <Register /> },
