@@ -9,7 +9,6 @@ type TRideRequest = {
 };
 
 const RideRequests = () => {
-  // pollingInterval ব্যবহার করতে চাইলে: { pollingInterval: 5000 } আর্গুমেন্ট হিসেবে দিন
   const { data, isLoading, isError } = useGetPendingRequestsQuery(undefined);
   const [acceptRide] = useAcceptRideMutation();
 
@@ -18,7 +17,7 @@ const RideRequests = () => {
     try {
         await acceptRide(rideId).unwrap();
         toast.success("Ride accepted successfully!", { id: toastId });
-    } catch (error) {
+    } catch {
         toast.error("Failed to accept ride.", { id: toastId });
     }
   }

@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import type { RootState } from '../../store';
 
 type TUser = {
   _id: string;
@@ -12,9 +14,10 @@ type TAuthState = {
   token: null | string;
 };
 
+const token = localStorage.getItem('token');
 const initialState: TAuthState = {
   user: null,
-  token: null,
+  token: token,
 };
 
 const authSlice = createSlice({
@@ -25,10 +28,12 @@ const authSlice = createSlice({
       const { user, token } = action.payload;
       state.user = user;
       state.token = token;
+      localStorage.setItem('token', token);
     },
     logout: (state) => {
       state.user = null;
       state.token = null;
+      localStorage.removeItem('token');
     },
   },
 });
@@ -36,6 +41,5 @@ const authSlice = createSlice({
 export const { setUser, logout } = authSlice.actions;
 export default authSlice.reducer;
 
-// Selectors
-export const selectCurrentUser = (state: { auth: TAuthState }) => state.auth.user;
-export const selectCurrentToken = (state: { auth: TAuthState }) => state.auth.token;
+export const selectCurrentUser = (state: RootState) => state.auth.user;
+export const selectCurrentToken = (state: RootState) => state.auth.token;

@@ -16,7 +16,7 @@ const ActiveRide = () => {
     try {
       await updateRideStatus({ rideId: ride._id, status }).unwrap();
       toast.success("Status updated successfully!", { id: toastId });
-    } catch (error) {
+    } catch {
       toast.error("Failed to update status.", { id: toastId });
     }
   };

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useGetAllRidersQuery, useManageUserBlockStatusMutation } from '../../../redux/features/admin/adminApi';
 
-// Debounce Hook for search functionality
 const useDebounced = (value: string, delay: number) => {
     const [debouncedValue, setDebouncedValue] = useState(value);
     useEffect(() => {
@@ -15,7 +14,6 @@ const useDebounced = (value: string, delay: number) => {
     return debouncedValue;
 };
 
-// Define a type for the rider object for type safety
 type TRider = {
     _id: string;
     name: string;

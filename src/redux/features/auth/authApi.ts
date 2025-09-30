@@ -16,7 +16,14 @@ const authApi = baseApi.injectEndpoints({
         body: credentials,
       }),
     }),
+    getMyProfile: builder.query({
+      query: () => ({
+        url: '/auth/me',
+        method: 'GET',
+      }),
+      providesTags: ['users'],
+    }),
   }),
 });
 
-export const { useRegisterMutation, useLoginMutation } = authApi;
+export const { useRegisterMutation, useLoginMutation, useGetMyProfileQuery } = authApi;

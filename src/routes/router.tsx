@@ -14,9 +14,15 @@ import ActiveRide from '../pages/dashboard/driver/ActiveRide';
 import Profile from '../pages/dashboard/common/Profile';
 import About from '../pages/About';
 import Contact from '../pages/Contact';
+import Earnings from '../pages/dashboard/driver/Earnings';
+import Faq from '../pages/Faq';
+import PersistLogin from '../layouts/PersistLogin';
 
 export const router = createBrowserRouter([
   {
+    element: <PersistLogin />,
+    children: [
+      {
     path: '/',
     element: <MainLayout />,
     children: [ 
@@ -31,10 +37,16 @@ export const router = createBrowserRouter([
         path: '/contact',
         element: <Contact />,
       },
+      {
+          path: '/faq',
+          element: <Faq />,
+      },
      ],
   },
   { path: '/login', element: <Login /> },
   { path: '/register', element: <Register /> },
+    ]
+  },
 
   {
     path: '/dashboard',
@@ -68,6 +80,10 @@ export const router = createBrowserRouter([
         path: 'profile',
         element: <Profile />,
       },
+      {
+          path: 'earnings',
+          element: <Earnings />,
+        },
     ],
   },
 ]);
