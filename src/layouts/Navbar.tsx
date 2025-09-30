@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { logout, selectCurrentUser } from '../redux/features/auth/authSlice';
+import ThemeToggle from '../components/ui/ThemeToggle';
 
 const Navbar = () => {
     const user = useAppSelector(selectCurrentUser);
@@ -13,7 +14,7 @@ const Navbar = () => {
     }
 
   return (
-    <header className="bg-white shadow-md">
+    <header className="bg-white text-gray-800 shadow-md">
       <nav className="container mx-auto px-4 py-3 flex justify-between items-center">
         <NavLink to="/" className="text-2xl font-bold text-indigo-600">
           RideX
@@ -32,6 +33,7 @@ const Navbar = () => {
                 <li><NavLink to="/register" className="bg-indigo-600 text-white px-3 py-1 rounded-md hover:bg-indigo-700">Register</NavLink></li>
             </>
           )}
+          <li><ThemeToggle /></li>
         </ul>
       </nav>
     </header>

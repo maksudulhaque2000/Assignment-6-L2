@@ -43,7 +43,27 @@ const UserManagement = () => {
     }
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) {
+    return (
+      <div className="p-4">
+        <h1 className="text-2xl font-bold mb-4">Rider Management</h1>
+        <div className="mb-4">
+            <div className="h-10 w-full max-w-xs bg-gray-300 rounded-md animate-pulse"></div>
+        </div>
+        <div className="overflow-x-auto">
+            <div className="min-w-full bg-white border">
+                <div className="h-12 bg-gray-200 animate-pulse"></div>
+                <div>
+                    {[...Array(5)].map((_, i) => (
+                        <div key={i} className="h-12 border-b bg-gray-100 animate-pulse"></div>
+                    ))}
+                </div>
+            </div>
+        </div>
+      </div>
+    );
+  }
+  
   if (isError) return <div>Error loading users.</div>;
 
   return (
