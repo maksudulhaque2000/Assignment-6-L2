@@ -22,6 +22,8 @@ const Navbar = () => {
         <ul className="flex items-center space-x-4">
           <li><NavLink to="/" className="text-gray-600 hover:text-indigo-600">Home</NavLink></li>
           <li><NavLink to="/about" className="text-gray-600 hover:text-indigo-600">About</NavLink></li>
+          <li><NavLink to="/contact" className="text-gray-600 hover:text-indigo-600">Contact</NavLink></li>
+          <li><NavLink to="/faq" className="text-gray-600 hover:text-indigo-600">F&Q</NavLink></li>
           {user ? (
             <>
                  <li><NavLink to="/dashboard" className="text-gray-600 hover:text-indigo-600">Dashboard</NavLink></li>
