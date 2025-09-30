@@ -7,7 +7,7 @@ import { useAppDispatch } from '../redux/hooks';
 import { setUser } from '../redux/features/auth/authSlice';
 
 const Register = () => {
-  const { register, handleSubmit, watch } = useForm();
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [registerUser, { isLoading }] = useRegisterMutation();
@@ -39,30 +39,46 @@ const Register = () => {
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Full Name</label>
             <input
               type="text"
-              {...register('name', { required: true })}
+              {...register('name', { required: 'Full Name is required' })}
               className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
             />
+            {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message as string}</p>}
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
             <input
               type="email"
-              {...register('email', { required: true })}
+              {...register('email', { 
+                  required: 'Email is required',
+                  pattern: {
+                      value: /^\S+@\S+\.\S+$/,
+                      message: "Please enter a valid email address"
+                  }
+              })}
               className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
             />
+            {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message as string}</p>}
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
             <input
               type="password"
-              {...register('password', { required: true })}
+              {...register('password', { 
+                  required: 'Password is required',
+                  minLength: {
+                      value: 6,
+                      message: "Password must be at least 6 characters"
+                  }
+               })}
               className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
             />
+            {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message as string}</p>}
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Register as</label>
             <select
               {...register('role', { required: true })}
+              defaultValue="rider"
               className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
             >
               <option value="rider">Rider</option>
@@ -77,17 +93,19 @@ const Register = () => {
                 <input
                   type="text"
                   placeholder="e.g., Toyota Axio, DH-GA-1234"
-                  {...register('vehicleDetails', { required: true })}
+                  {...register('vehicleDetails', { required: 'Vehicle details are required for drivers' })}
                   className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 />
+                {errors.vehicleDetails && <p className="text-red-500 text-xs mt-1">{errors.vehicleDetails.message as string}</p>}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">License Number</label>
                 <input
                   type="text"
-                  {...register('licenseNumber', { required: true })}
+                  {...register('licenseNumber', { required: 'License number is required for drivers' })}
                   className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 />
+                {errors.licenseNumber && <p className="text-red-500 text-xs mt-1">{errors.licenseNumber.message as string}</p>}
               </div>
             </>
           )}

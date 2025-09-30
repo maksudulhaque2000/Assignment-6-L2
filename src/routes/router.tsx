@@ -18,6 +18,7 @@ import Earnings from '../pages/dashboard/driver/Earnings';
 import Faq from '../pages/Faq';
 import PersistLogin from '../layouts/PersistLogin';
 import RideOversight from '../pages/dashboard/admin/RideOversight';
+import AccountStatusPage from '../pages/AccountStatusPage';
 
 export const router = createBrowserRouter([
   {
@@ -31,21 +32,30 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/about',
+        path: 'about',
         element: <About />,
       },
       {
-        path: '/contact',
+        path: 'contact',
         element: <Contact />,
       },
       {
-          path: '/faq',
+          path: 'faq',
           element: <Faq />,
       },
+      { 
+          path: 'login', 
+          element: <Login /> 
+      },
+      {   path: 'register', 
+          element: <Register /> 
+      },
+      {   path: 'account-status',
+          element: <AccountStatusPage /> 
+      }
      ],
   },
-  { path: '/login', element: <Login /> },
-  { path: '/register', element: <Register /> },
+  
     ]
   },
 
