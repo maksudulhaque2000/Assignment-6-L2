@@ -1,5 +1,6 @@
 import { useGetActiveRideAsDriverQuery, useUpdateRideStatusMutation } from "../../../redux/features/ride/rideApi";
 import { toast } from 'react-hot-toast';
+import Skeleton from "../../../components/ui/Skeleton";
 
 const ActiveRide = () => {
   const { data, isLoading } = useGetActiveRideAsDriverQuery(undefined, {
@@ -15,12 +16,19 @@ const ActiveRide = () => {
     try {
       await updateRideStatus({ rideId: ride._id, status }).unwrap();
       toast.success("Status updated successfully!", { id: toastId });
-    } catch (error) {
+    } catch {
       toast.error("Failed to update status.", { id: toastId });
     }
   };
 
-  if (isLoading) return <div>Loading active ride details...</div>;
+  if (isLoading) {
+    return (
+        <div className="p-4">
+            <Skeleton className="h-8 w-1/3 mb-4" />
+            <Skeleton className="h-64 w-full max-w-2xl rounded-lg" />
+        </div>
+    );
+  }
 
   if (!ride) {
     return (
@@ -34,11 +42,29 @@ const ActiveRide = () => {
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4 dark:text-white">Active Ride Details</h1>
-      <div className="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800">
-        <p className="dark:text-gray-300"><strong>Rider:</strong> {ride.riderId?.name || 'N/A'}</p>
-        <p className="dark:text-gray-300"><strong>Status:</strong> <span className="font-semibold capitalize">{ride.status}</span></p>
+      <div className="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 max-w-2xl space-y-4">
         
-        <div className="mt-6 flex flex-wrap gap-2">
+        <div>
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Rider Information</h3>
+            <p className="dark:text-gray-300"><strong>Name:</strong> {ride.riderId?.name || 'N/A'}</p>
+        </div>
+
+        <div className="border-t dark:border-gray-700 pt-4">
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Current Status</h3>
+            <p className="font-semibold capitalize text-xl text-indigo-600 dark:text-indigo-400">{ride.status.replace('_', ' ')}</p>
+        </div>
+        
+        <div className="border-t dark:border-gray-700 pt-4">
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Trip Details</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+                <strong>From (Pickup):</strong> {ride.pickupLocation?.coordinates?.join(', ') || 'N/A'}
+            </p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+                <strong>To (Destination):</strong> {ride.destinationLocation?.coordinates?.join(', ') || 'N/A'}
+            </p>
+        </div>
+
+        <div className="border-t dark:border-gray-700 pt-4 flex flex-wrap gap-2">
             {ride.status === 'accepted' && (
                 <button onClick={() => handleUpdateStatus('picked_up')} className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
                     Mark as Picked Up
