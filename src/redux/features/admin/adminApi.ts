@@ -9,20 +9,30 @@ type TQueryArgs = {
 
 const adminApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getAllRiders: builder.query({
-      query: (args: TQueryArgs = {}) => {
+    getUsers: builder.query({
+      query: (args) => {
         const params = new URLSearchParams();
-        if (args.searchTerm) params.append('searchTerm', args.searchTerm);
-        if (args.page) params.append('page', String(args.page));
-        if (args.limit) params.append('limit', String(args.limit));
+        if (args?.searchTerm) params.append('searchTerm', args.searchTerm);
+        if (args?.page) params.append('page', args.page);
+        if (args?.limit) params.append('limit', args.limit);
+        if (args?.role) params.append('role', args.role);
         
         return {
-          url: `/admin/users`,
+          url: `/admin/users`, 
           method: 'GET',
           params: params,
         };
       },
       providesTags: ['users'],
+    }),
+    
+    manageUserRole: builder.mutation({
+        query: ({ userId, role }) => ({
+            url: `/admin/users/${userId}/role`,
+            method: 'PATCH',
+            body: { role }
+        }),
+        invalidatesTags: ['users']
     }),
 
     getAllDrivers: builder.query({
@@ -85,7 +95,8 @@ const adminApi = baseApi.injectEndpoints({
 });
 
 export const {
-  useGetAllRidersQuery,
+  useGetUsersQuery,
+  useManageUserRoleMutation,
   useGetAllDriversQuery,
   useGetAllRidesQuery,
   useManageUserBlockStatusMutation,
