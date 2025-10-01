@@ -11,6 +11,9 @@ const Navbar = () => {
     const handleLogout = () => {
         dispatch(logout());
         toast.success("Logged out successfully!");
+        setTimeout(() => {
+            window.location.reload();
+        }, 1500);
     }
 
   return (
