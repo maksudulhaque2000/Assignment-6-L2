@@ -11,8 +11,8 @@ const rideApi = baseApi.injectEndpoints({
     }),
 
     getRideHistory: builder.query({
-      query: () => ({
-        url: '/rides/history/rider',
+      query: (role) => ({
+        url: `/rides/history/${role}`,
         method: 'GET',
       }),
       providesTags: ['rides'],

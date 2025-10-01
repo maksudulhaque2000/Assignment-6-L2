@@ -1,5 +1,7 @@
 import { useGetRideHistoryQuery } from "../../../redux/features/ride/rideApi";
 import Skeleton from "../../../components/ui/Skeleton";
+import { useAppSelector } from "../../../redux/hooks";
+import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
 
 type TRide = {
     _id: string;
@@ -10,9 +12,13 @@ type TRide = {
 };
 
 const RideHistory = () => {
-  const { data, isLoading, isError } = useGetRideHistoryQuery(undefined);
+  const user = useAppSelector(selectCurrentUser);
+  
+  const { data, isLoading, isError } = useGetRideHistoryQuery(user?.role, {
+    skip: !user,
+  });
 
-  if (isLoading) {
+  if (isLoading || !user) {
     return (
       <div className="p-4">
         <h1 className="text-2xl font-bold mb-4">
