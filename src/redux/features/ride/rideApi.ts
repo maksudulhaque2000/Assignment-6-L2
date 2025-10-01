@@ -34,6 +34,14 @@ const rideApi = baseApi.injectEndpoints({
       invalidatesTags: ['rides'],
     }),
 
+    rejectRide: builder.mutation({
+      query: (rideId) => ({
+        url: `/rides/${rideId}/reject`,
+        method: 'PATCH',
+      }),
+      invalidatesTags: ['rides'],
+    }),
+
     getActiveRideAsDriver: builder.query({
       query: () => '/rides/driver/active-ride',
       providesTags: ['rides'],
@@ -48,6 +56,11 @@ const rideApi = baseApi.injectEndpoints({
       invalidatesTags: ['rides'],
     }),
 
+    getActiveRideAsRider: builder.query({
+      query: () => '/rides/rider/active-ride',
+        providesTags: ['rides'],
+    }),
+
   }),
 });
 
@@ -56,6 +69,8 @@ export const {
   useGetRideHistoryQuery,
   useGetPendingRequestsQuery,
   useAcceptRideMutation,
+  useRejectRideMutation,
   useGetActiveRideAsDriverQuery,
   useUpdateRideStatusMutation,
+  useGetActiveRideAsRiderQuery,
 } = rideApi;

@@ -19,6 +19,7 @@ import Faq from '../pages/Faq';
 import PersistLogin from '../layouts/PersistLogin';
 import RideOversight from '../pages/dashboard/admin/RideOversight';
 import AccountStatusPage from '../pages/AccountStatusPage';
+import ActiveRideRider from '../pages/dashboard/rider/ActiveRideRider';
 
 export const router = createBrowserRouter([
   {
@@ -90,6 +91,10 @@ export const router = createBrowserRouter([
       {
         path: 'active-ride',
         element: <ActiveRide />,
+      },
+      {
+        path: 'active-ride-rider',
+        element: <ActiveRideRider />,
       },
       {
         path: 'profile',

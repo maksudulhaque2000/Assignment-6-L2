@@ -12,6 +12,7 @@ const adminNavItems: TNavItem[] = [
   { name: 'User Management', path: '/dashboard/user-management' },
   { name: 'Ride Oversight', path: '/dashboard/ride-oversight' },
   { name: 'My Profile', path: '/dashboard/profile' },
+  { name: 'Back to Home', path: '/' },
 ];
 
 const driverNavItems: TNavItem[] = [
@@ -21,12 +22,16 @@ const driverNavItems: TNavItem[] = [
   { name: 'Ride History', path: '/dashboard/ride-history' },
   { name: 'Earnings', path: '/dashboard/earnings' },
   { name: 'My Profile', path: '/dashboard/profile' },
+  { name: 'Back to Home', path: '/' },
 ];
 
 const riderNavItems: TNavItem[] = [
+  { name: 'Dashboard', path: '/dashboard' },
   { name: 'Request a Ride', path: '/dashboard/request-ride' },
+  { name: 'Active Ride', path: '/dashboard/active-ride-rider' },
   { name: 'Ride History', path: '/dashboard/ride-history' },
   { name: 'My Profile', path: '/dashboard/profile' },
+  { name: 'Back to Home', path: '/' },
 ];
 
 const Sidebar = () => {
