@@ -1,3 +1,4 @@
+import Skeleton from "../../../components/ui/Skeleton";
 import { useGetPendingRequestsQuery, useAcceptRideMutation, useRejectRideMutation } from "../../../redux/features/ride/rideApi";
 import { toast } from 'react-hot-toast';
 
@@ -9,7 +10,9 @@ type TRideRequest = {
 };
 
 const RideRequests = () => {
-  const { data, isLoading, isError } = useGetPendingRequestsQuery(undefined);
+  const { data, isLoading, isError, error } = useGetPendingRequestsQuery(undefined, {
+      pollingInterval: 5000,
+  });
   const [acceptRide] = useAcceptRideMutation();
   const [rejectRide] = useRejectRideMutation();
 
@@ -33,8 +36,39 @@ const RideRequests = () => {
     }
   }
 
-  if (isLoading) return <div>Loading requests...</div>;
-  if (isError) return <div>Error loading requests.</div>;
+  if (isLoading) return (
+    <div className="p-4">
+        <h1 className="text-2xl font-bold mb-4">
+          <Skeleton className="h-8 w-64" />
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[...Array(6)].map((_, index) => (
+            <div key={index} className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md space-y-3">
+              <Skeleton className="h-5 w-3/4" />
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-full" />
+              <div className="mt-4 flex justify-end gap-2 pt-2">
+                <Skeleton className="h-7 w-16 rounded" />
+                <Skeleton className="h-7 w-16 rounded" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+  );
+  if (isError) {
+    if (error && 'status' in error && error.status === 403) {
+        return (
+            <div className="p-4 text-center">
+                <div className="bg-yellow-100 dark:bg-gray-800 border-l-4 border-yellow-500 text-yellow-700 dark:text-yellow-300 p-6 rounded-md shadow-md max-w-md mx-auto">
+                    <h2 className="font-bold text-xl mb-2">You are Currently Offline</h2>
+                    <p>Please use the toggle in the sidebar to go online and start receiving ride requests.</p>
+                </div>
+            </div>
+        );
+    }
+    return <div>Error loading requests. Please try again later.</div>;
+  }
 
   const requests = data?.data || [];
 
