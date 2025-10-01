@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../redux/hooks';
 import { selectCurrentUser } from '../redux/features/auth/authSlice';
+import AvailabilityToggle from '../pages/dashboard/AvailabilityToggle';
 
 type TNavItem = {
   name: string;
@@ -86,6 +87,11 @@ const Sidebar = () => {
           ))}
         </ul>
       </nav>
+      {user.role === 'driver' && (
+        <div className="mt-auto">
+            <AvailabilityToggle />
+        </div>
+      )}
     </aside>
   );
 };

@@ -15,7 +15,24 @@ const driverApi = baseApi.injectEndpoints({
         method: 'GET',
       }),
     }),
+
+    getMyDriverProfile: builder.query({
+        query: () => ({
+            url: '/drivers/me',
+            method: 'GET'
+        }),
+        providesTags: ['drivers']
+    }),
+
+    updateAvailability: builder.mutation({
+      query: (payload: { availability: 'online' | 'offline' }) => ({
+        url: '/drivers/availability',
+        method: 'PATCH',
+        body: payload,
+      }),
+      invalidatesTags: ['drivers'],
+    }),
   }),
 });
 
-export const { useGetDriverEarningsQuery, useGetEarningsAnalyticsQuery } = driverApi;
+export const { useGetDriverEarningsQuery, useGetEarningsAnalyticsQuery, useGetMyDriverProfileQuery, useUpdateAvailabilityMutation } = driverApi;
