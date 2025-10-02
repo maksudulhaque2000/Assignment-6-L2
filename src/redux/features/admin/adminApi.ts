@@ -36,14 +36,12 @@ const adminApi = baseApi.injectEndpoints({
     }),
 
     getAllDrivers: builder.query({
-      query: (args: TQueryArgs = {}) => {
+      query: (args) => {
         const params = new URLSearchParams();
-        if (args.searchTerm) params.append('searchTerm', args.searchTerm);
-        if (args.page) params.append('page', String(args.page));
-        if (args.limit) params.append('limit', String(args.limit));
+        if (args?.page) params.append('page', String(args.page));
         
         return {
-          url: `/admin/drivers`,
+          url: `/admin/drivers`, 
           method: 'GET',
           params: params,
         };

@@ -11,6 +11,7 @@ type TNavItem = {
 const adminNavItems: TNavItem[] = [
   { name: 'Dashboard', path: '/dashboard' },
   { name: 'User Management', path: '/dashboard/user-management' },
+  { name: 'Driver Approvals', path: '/dashboard/driver-approvals' },
   { name: 'Ride Oversight', path: '/dashboard/ride-oversight' },
   { name: 'My Profile', path: '/dashboard/profile' },
   { name: 'Back to Home', path: '/' },

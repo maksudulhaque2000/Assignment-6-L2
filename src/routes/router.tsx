@@ -20,6 +20,7 @@ import PersistLogin from '../layouts/PersistLogin';
 import RideOversight from '../pages/dashboard/admin/RideOversight';
 import AccountStatusPage from '../pages/AccountStatusPage';
 import ActiveRideRider from '../pages/dashboard/rider/ActiveRideRider';
+import DriverManagement from '../pages/dashboard/admin/DriverManagement';
 
 export const router = createBrowserRouter([
   {
@@ -72,6 +73,10 @@ export const router = createBrowserRouter([
         path: 'user-management',
         element: <UserManagement />,
       },
+      {
+          path: 'driver-approvals',
+          element: <DriverManagement />,
+        },
       {
           path: 'ride-oversight',
           element: <RideOversight />,
