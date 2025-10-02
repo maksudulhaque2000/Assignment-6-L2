@@ -8,7 +8,7 @@ const userApi = baseApi.injectEndpoints({
         method: 'PATCH',
         body: profileData,
       }),
-      invalidatesTags: ['users'],
+      invalidatesTags: ['users', 'drivers'],
     }),
   }),
 });

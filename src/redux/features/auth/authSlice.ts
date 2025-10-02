@@ -7,6 +7,8 @@ type TUser = {
   name: string;
   email: string;
   role: 'rider' | 'driver' | 'admin';
+  phone?: string;
+  address?: string;
 };
 
 type TAuthState = {
