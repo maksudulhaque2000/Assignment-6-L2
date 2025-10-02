@@ -11,10 +11,17 @@ const rideApi = baseApi.injectEndpoints({
     }),
 
     getRideHistory: builder.query({
-      query: (role) => ({
-        url: `/rides/history/${role}`,
-        method: 'GET',
-      }),
+      query: (args) => {
+        const params = new URLSearchParams();
+        if (args?.page) params.append('page', String(args.page));
+        if (args?.status) params.append('status', args.status);
+
+        return {
+          url: `/rides/history/${args.role}`,
+          method: 'GET',
+          params: params,
+        }
+      },
       providesTags: ['rides'],
     }),
 

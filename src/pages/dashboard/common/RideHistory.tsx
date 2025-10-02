@@ -2,6 +2,7 @@ import { useGetRideHistoryQuery } from "../../../redux/features/ride/rideApi";
 import Skeleton from "../../../components/ui/Skeleton";
 import { useAppSelector } from "../../../redux/hooks";
 import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
+import { useState } from "react";
 
 type TRide = {
     _id: string;
@@ -13,8 +14,14 @@ type TRide = {
 
 const RideHistory = () => {
   const user = useAppSelector(selectCurrentUser);
+  const [page, setPage] = useState(1);
+  const [statusFilter, setStatusFilter] = useState('');
   
-  const { data, isLoading, isError } = useGetRideHistoryQuery(user?.role, {
+  const { data, isLoading, isError } = useGetRideHistoryQuery({ 
+      role: user?.role, 
+      page, 
+      status: statusFilter 
+    }, {
     skip: !user,
   });
 
@@ -61,10 +68,28 @@ const RideHistory = () => {
   if (isError) return <div>Failed to load ride history.</div>;
 
   const rides = data?.data || [];
+  const meta = data?.meta;
 
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4 dark:text-white">My Ride History</h1>
+      <div className="mb-4">
+        <label className="mr-2 dark:text-gray-300">Filter by Status:</label>
+        <select 
+            value={statusFilter} 
+            onChange={(e) => {
+                setStatusFilter(e.target.value);
+                setPage(1);
+            }}
+            className="p-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+        >
+            <option value="">All</option>
+            <option value="requested">Requested</option>
+            <option value="accepted">Accepted</option>
+            <option value="completed">Completed</option>
+            <option value="cancelled">Cancelled</option>
+        </select>
+      </div>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border dark:bg-gray-800 dark:border-gray-700">
           <thead className="bg-gray-200 dark:bg-gray-700">
@@ -97,6 +122,24 @@ const RideHistory = () => {
           </tbody>
         </table>
       </div>
+
+      <div className="flex justify-center mt-4">
+          <button
+            onClick={() => setPage(page - 1)}
+            disabled={!meta || meta.page === 1}
+            className="px-4 py-2 mx-1 bg-gray-300 dark:bg-gray-600 dark:text-white rounded disabled:opacity-50"
+          >
+            Previous
+          </button>
+          <span className="px-4 py-2 dark:text-gray-300">Page {meta?.page} of {meta?.totalPages}</span>
+          <button
+             onClick={() => setPage(page + 1)}
+             disabled={!meta || meta.page === meta.totalPages}
+            className="px-4 py-2 mx-1 bg-gray-300 dark:bg-gray-600 dark:text-white rounded disabled:opacity-50"
+          >
+            Next
+          </button>
+       </div>
     </div>
   );
 };
