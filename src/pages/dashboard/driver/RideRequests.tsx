@@ -7,6 +7,7 @@ type TRideRequest = {
   riderId: { name: string };
   pickupLocation: { coordinates: [number, number] };
   destinationLocation: { coordinates: [number, number] };
+  fare: number;
 };
 
 const RideRequests = () => {
@@ -85,6 +86,9 @@ const RideRequests = () => {
               </p>
               <p className="text-sm text-gray-600 dark:text-gray-300">
                 To: {ride.destinationLocation.coordinates.join(', ')}
+              </p>
+              <p className="mt-2 font-bold text-lg text-green-600 dark:text-green-400">
+                  Offered Fare: ${ride.fare.toFixed(2)}
               </p>
               <div className="mt-4 flex justify-end gap-2">
                 <button 

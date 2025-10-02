@@ -10,6 +10,7 @@ type TRide = {
     destinationLocation: { coordinates: [number, number] };
     status: 'pending' | 'accepted' | 'completed' | 'cancelled';
     createdAt: string;
+    fare?: number;
 };
 
 const RideHistory = () => {
@@ -39,6 +40,7 @@ const RideHistory = () => {
                 <th className="py-2 px-4 border dark:border-gray-600">Pickup Location</th>
                 <th className="py-2 px-4 border dark:border-gray-600">Destination</th>
                 <th className="py-2 px-4 border dark:border-gray-600">Status</th>
+                <th className="py-2 px-4 border dark:border-gray-600">Fare</th>
               </tr>
             </thead>
             <tbody>
@@ -56,6 +58,8 @@ const RideHistory = () => {
                   <td className="py-2 px-4 border dark:border-gray-700">
                     <Skeleton className="h-6 w-20 rounded-full" />
                   </td>
+                  <td className="py-2 px-4 border dark:border-gray-700">
+                    <Skeleton className="h-5 w-16" /></td>
                 </tr>
               ))}
             </tbody>
@@ -98,6 +102,7 @@ const RideHistory = () => {
               <th className="py-2 px-4 border dark:border-gray-600 dark:text-gray-200">Pickup Location</th>
               <th className="py-2 px-4 border dark:border-gray-600 dark:text-gray-200">Destination</th>
               <th className="py-2 px-4 border dark:border-gray-600 dark:text-gray-200">Status</th>
+              <th className="py-2 px-4 border dark:border-gray-600 dark:text-gray-200">Fare</th>
             </tr>
           </thead>
           <tbody>
@@ -112,6 +117,7 @@ const RideHistory = () => {
                       {ride.status}
                     </span>
                   </td>
+                  <td className="py-2 px-4 border dark:border-gray-700 font-medium">${ride.fare?.toFixed(2) || '0.00'}</td>
                 </tr>
               ))
             ) : (

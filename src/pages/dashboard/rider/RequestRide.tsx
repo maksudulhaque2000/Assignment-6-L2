@@ -26,7 +26,7 @@ function isRtkError(error: unknown): error is RtkError {
 
 
 const RequestRide = () => {
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [requestRide, { isLoading }] = useRequestRideMutation();
 
     const onSubmit = async (data: FieldValues) => {
@@ -52,7 +52,8 @@ const RequestRide = () => {
                 destinationLocation: { 
                     type: 'Point',
                     coordinates: destinationCoords
-                }
+                },
+                fare: Number(data.fare)
             }
         
             await requestRide(rideData).unwrap();
@@ -92,6 +93,19 @@ const RequestRide = () => {
                     {...register('destination', { required: true })}
                     className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                     />
+                </div>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Offered Fare ($)</label>
+                    <input
+                        type="number"
+                        placeholder="e.g., 10"
+                        {...register('fare', { 
+                            required: 'Fare is required',
+                            min: { value: 1, message: 'Fare must be a positive number' }
+                        })}
+                        className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    />
+                    {errors.fare && <p className="text-red-500 text-xs mt-1">{errors.fare.message as string}</p>}
                 </div>
                 <button type="submit" disabled={isLoading} className="w-full px-4 py-2 font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 disabled:bg-gray-400">
                     {isLoading ? "Requesting..." : "Request Ride"}
