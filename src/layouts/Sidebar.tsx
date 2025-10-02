@@ -14,7 +14,6 @@ const adminNavItems: TNavItem[] = [
   { name: 'Driver Approvals', path: '/dashboard/driver-approvals' },
   { name: 'Ride Oversight', path: '/dashboard/ride-oversight' },
   { name: 'My Profile', path: '/dashboard/profile' },
-  { name: 'Back to Home', path: '/' },
 ];
 
 const driverNavItems: TNavItem[] = [
@@ -24,7 +23,6 @@ const driverNavItems: TNavItem[] = [
   { name: 'Ride History', path: '/dashboard/ride-history' },
   { name: 'Earnings', path: '/dashboard/earnings' },
   { name: 'My Profile', path: '/dashboard/profile' },
-  { name: 'Back to Home', path: '/' },
 ];
 
 const riderNavItems: TNavItem[] = [
@@ -33,7 +31,6 @@ const riderNavItems: TNavItem[] = [
   { name: 'Active Ride', path: '/dashboard/active-ride-rider' },
   { name: 'Ride History', path: '/dashboard/ride-history' },
   { name: 'My Profile', path: '/dashboard/profile' },
-  { name: 'Back to Home', path: '/' },
 ];
 
 const Sidebar = () => {
@@ -88,6 +85,14 @@ const Sidebar = () => {
           ))}
         </ul>
       </nav>
+      <div className="mt-8 border-t border-gray-700 pt-4">
+             <NavLink
+                to="/"
+                className="block p-2 rounded-md transition-colors hover:bg-gray-600"
+            >
+                Back to Home
+            </NavLink>
+        </div>
       {user.role === 'driver' && (
         <div className="mt-auto">
             <AvailabilityToggle />
