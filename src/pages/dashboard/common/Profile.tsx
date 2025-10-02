@@ -43,7 +43,6 @@ const Profile = () => {
         }
     }
     
-    // !! পরিবর্তন এখানে: স্কেলেটন লোডার যোগ করা হয়েছে !!
     if (!user || (user.role === 'driver' && isDriverProfileLoading)) {
         return (
             <div className="max-w-2xl mx-auto p-4">
