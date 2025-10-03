@@ -23,6 +23,7 @@ const Profile = () => {
                 email: user.email,
                 phone: user.phone,
                 address: user.address,
+                profileImage: user.profileImage,
             };
             if (user.role === 'driver' && driverData?.data) {
                 defaultValues.vehicleDetails = driverData.data.vehicleDetails;
@@ -98,6 +99,10 @@ const Profile = () => {
                  <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Address</label>
                     <input type="text" {...register('address')} className="w-full px-3 py-2 mt-1 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
+                </div>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Profile Image URL</label>
+                    <input type="url" {...register('profileImage')} className="w-full px-3 py-2 mt-1 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
                 </div>
 
                 {user.role === 'driver' && (

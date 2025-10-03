@@ -9,6 +9,7 @@ type TUser = {
   role: 'rider' | 'driver' | 'admin';
   phone?: string;
   address?: string;
+  profileImage?: string;
 };
 
 type TAuthState = {
