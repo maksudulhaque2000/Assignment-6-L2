@@ -28,38 +28,38 @@ This application provides a comprehensive set of features tailored for three dis
 
 ### 📚 (General Features)
 -   **Fully Responsive Design:** A polished and intuitive UI/UX across mobile, tablet, and desktop devices.
--   [cite_start]**Role-Based Navigation:** Menus and dashboards adapt based on the logged-in user's role. [cite: 81]
--   [cite_start]**Persistent Authentication:** User login state is preserved across browser sessions. [cite: 62]
+-   [cite_start]**Role-Based Navigation:** Menus and dashboards adapt based on the logged-in user's role.
+-   [cite_start]**Persistent Authentication:** User login state is preserved across browser sessions.
 -   **Dark/Light Mode:** A theme toggle for user comfort.
--   [cite_start]**Robust Form Validation:** All forms include strict validation with user-friendly error messages. [cite: 102]
--   [cite_start]**Toast Notifications:** Real-time feedback for both successful and failed actions using `react-hot-toast`. [cite: 104]
--   [cite_start]**Skeleton Loaders:** Enhanced perceived performance with skeleton loaders during data fetching. [cite: 83]
+-   [cite_start]**Robust Form Validation:** All forms include strict validation with user-friendly error messages.
+-   [cite_start]**Toast Notifications:** Real-time feedback for both successful and failed actions using `react-hot-toast`.
+-   [cite_start]**Skeleton Loaders:** Enhanced perceived performance with skeleton loaders during data fetching.
 -   **Guided Tour:** An interactive guided tour for new admins to explore the dashboard features.
 
 ### 🌐 Public Pages
--   [cite_start]**Multi-Section Homepage:** A feature-rich landing page with a Hero Section, How It Works, Services, Testimonials, and a Call-to-Action. [cite: 45]
--   [cite_start]**About, Contact, and FAQ Pages:** Static pages with a searchable FAQ section. [cite: 47, 49, 50]
+-   [cite_start]**Multi-Section Homepage:** A feature-rich landing page with a Hero Section, How It Works, Services, Testimonials, and a Call-to-Action.
+-   [cite_start]**About, Contact, and FAQ Pages:** Static pages with a searchable FAQ section.
 
 ### 👤 Rider Features
 -   **Ride Request Form:** A simple form to request a ride by providing pickup/destination coordinates and an offered fare.
 -   **Active Ride View:** A dedicated page to view the status and details of an ongoing ride.
--   [cite_start]**SOS Button:** An emergency SOS button on the active ride screen to simulate sharing the user's current location. [cite: 88, 89, 95]
+-   [cite_start]**SOS Button:** An emergency SOS button on the active ride screen to simulate sharing the user's current location.
 -   **Ride History:** A paginated and filterable list of all past rides, including details like fare and status.
 -   **Profile Management:** Riders can view and update their personal information.
 
 ### 🚗 Driver Features
--   [cite_start]**Online/Offline Toggle:** A persistent toggle in the dashboard sidebar for drivers to manage their availability. [cite: 71]
--   [cite_start]**Incoming Ride Requests:** A real-time view of pending ride requests with the option to **Accept** or **Reject** them. [cite: 72]
--   [cite_start]**Active Ride Management:** A dedicated page to manage the status of an accepted ride (e.g., Picked Up, In Transit, Completed). [cite: 73]
--   [cite_start]**Earnings Dashboard:** A visual breakdown of total earnings and completed rides, featuring charts for monthly performance. [cite: 74]
+-   [cite_start]**Online/Offline Toggle:** A persistent toggle in the dashboard sidebar for drivers to manage their availability.
+-   [cite_start]**Incoming Ride Requests:** A real-time view of pending ride requests with the option to **Accept** or **Reject** them.
+-   [cite_start]**Active Ride Management:** A dedicated page to manage the status of an accepted ride (e.g., Picked Up, In Transit, Completed).
+-   [cite_start]**Earnings Dashboard:** A visual breakdown of total earnings and completed rides, featuring charts for monthly performance.
 -   **Ride History:** A paginated and filterable list of all completed or cancelled rides.
 
 ### 👮 Admin Features
--   [cite_start]**Comprehensive User Management:** A powerful interface to view, search, and filter all users (Riders, Drivers, Admins). [cite: 78]
+-   [cite_start]**Comprehensive User Management:** A powerful interface to view, search, and filter all users (Riders, Drivers, Admins).
 -   **User Actions:** Admins can **Block/Unblock** any user and **Make Admin/Remove Admin** privileges.
 -   **Driver Approvals:** A dedicated page to manage new driver applications, with options to **Approve** or **Suspend** them.
 -   **Ride Oversight:** A complete overview of all rides in the system, with advanced filtering by status.
--   [cite_start]**Analytics Dashboard:** Data visualizations showing key platform metrics like total users, rides, revenue, and a guided tour for new admins. [cite: 79]
+-   [cite_start]**Analytics Dashboard:** Data visualizations showing key platform metrics like total users, rides, revenue, and a guided tour for new admins.
 
 ---
 
