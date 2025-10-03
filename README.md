@@ -18,7 +18,7 @@ This repository contains the frontend for **RideX**, a production-grade, fully r
 
 -   **Live Frontend URL:** [https://ride-x-puce.vercel.app/](https://ride-x-puce.vercel.app/)
 -   **Live Backend URL:** [https://ridex-server-seven.vercel.app/](https://ridex-server-seven.vercel.app/)
--   **Full Video Demonstration:** [https://drive.google.com/file/d/1mYG2tgQFmry4Tb7QvKyZPHlCVpyZLNS1/view?usp=sharing](https://drive.google.com/file/d/1mYG2tgQFmry4Tb7QvKyZPHlCVpyZLNS1/view?usp=sharing)
+-   ## 🎬 [Video Explanation Link](https://drive.google.com/file/d/1eKFG2txmlB_AWgfoW1DbEcc45jrR_mkQ/view?usp=sharing)
 
 ---
 
@@ -26,7 +26,7 @@ This repository contains the frontend for **RideX**, a production-grade, fully r
 
 This application provides a comprehensive set of features tailored for three distinct user roles: **Rider**, **Driver**, and **Admin**.
 
-###  العامة (General Features)
+### 📚 (General Features)
 -   **Fully Responsive Design:** A polished and intuitive UI/UX across mobile, tablet, and desktop devices.
 -   [cite_start]**Role-Based Navigation:** Menus and dashboards adapt based on the logged-in user's role. [cite: 81]
 -   [cite_start]**Persistent Authentication:** User login state is preserved across browser sessions. [cite: 62]
