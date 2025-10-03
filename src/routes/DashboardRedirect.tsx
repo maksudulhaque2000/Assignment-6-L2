@@ -1,9 +1,8 @@
 import { useAppSelector } from '../redux/hooks';
 import { selectCurrentUser } from '../redux/features/auth/authSlice';
 import AdminDashboard from '../pages/dashboard/admin/AdminDashboard';
-import RequestRide from '../pages/dashboard/rider/RequestRide';
-import ActiveRide from '../pages/dashboard/driver/ActiveRide';
 import Skeleton from '../components/ui/Skeleton';
+import DashboardHome from '../pages/dashboard/DashboardHome';
 
 const DashboardRedirect = () => {
   const user = useAppSelector(selectCurrentUser);
@@ -27,10 +26,10 @@ const DashboardRedirect = () => {
     return <AdminDashboard />;
   }
   if (user.role === 'rider') {
-    return <RequestRide />;
+    return <DashboardHome />;
   }
   if (user.role === 'driver') {
-    return <ActiveRide />;
+    return <DashboardHome />;
   }
   
   return <div>Welcome! Please navigate using the sidebar.</div>;

@@ -90,7 +90,7 @@ const Navbar = () => {
                         {user ? (
                             <>
                                 <li><NavLink to="/dashboard" className="text-gray-600 hover:text-indigo-600 dark:text-white" onClick={closeMenu}>Dashboard</NavLink></li>
-                                <li><NavLink to="/profile" className="text-gray-600 hover:text-indigo-600 dark:text-white" onClick={closeMenu}>Profile</NavLink></li>
+                                <li><NavLink to="/dashboard/profile" className="text-gray-600 hover:text-indigo-600 dark:text-white" onClick={closeMenu}>Profile</NavLink></li>
                                 <li><button onClick={handleLogout} className="bg-red-500 text-white w-full px-4 py-2 rounded-md hover:bg-red-600">Logout</button></li>
                             </>
                         ) : (

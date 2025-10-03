@@ -21,6 +21,7 @@ import RideOversight from '../pages/dashboard/admin/RideOversight';
 import AccountStatusPage from '../pages/AccountStatusPage';
 import ActiveRideRider from '../pages/dashboard/rider/ActiveRideRider';
 import DriverManagement from '../pages/dashboard/admin/DriverManagement';
+import NotFound from '../pages/NotFound';
 
 export const router = createBrowserRouter([
   {
@@ -54,7 +55,11 @@ export const router = createBrowserRouter([
       },
       {   path: 'account-status',
           element: <AccountStatusPage /> 
-      }
+      },
+      {
+          path: '*',
+          element: <NotFound />,
+      },
      ],
   },
   {
@@ -105,9 +110,17 @@ export const router = createBrowserRouter([
           path: 'earnings',
           element: <Earnings />,
       },
+      {
+          path: '*',
+          element: <NotFound />,
+      },
     ],
   },
   
     ]
+  },
+  {
+    path: '*',
+    element: <NotFound />,
   },
 ]);
