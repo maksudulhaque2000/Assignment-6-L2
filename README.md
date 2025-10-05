@@ -19,7 +19,7 @@ This repository contains the frontend for **RideX**, a production-grade, fully r
 -   **Live Frontend URL:** [https://ride-x-puce.vercel.app/](https://ride-x-puce.vercel.app/)
 -   **Live Backend URL:** [https://ridex-server-seven.vercel.app/](https://ridex-server-seven.vercel.app/)
 -   **Backend Repositorie URL:** [https://github.com/maksudulhaque2000/RideX-Server](https://github.com/maksudulhaque2000/RideX-Server)
--   ## 🎬 [Video Explanation Link](https://drive.google.com/file/d/1eKFG2txmlB_AWgfoW1DbEcc45jrR_mkQ/view?usp=sharing)
+-   ## 🎬 [Video Explanation Link](https://drive.google.com/file/d/1fwL1vwCjXs27QY8oTPCHHUdOKf4IPShe/view?usp=sharing)
 
 ---
 
